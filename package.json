@@ -1,0 +1,66 @@
+{
+  "name": "vue-table-with-tree-grid",
+  "version": "0.1.1",
+  "description": "vue-table-with-tree-grid",
+  "author": "GaoQi <taki.gaoqi@outlook.com>",
+  "main": "lib/vue-table-with-tree-grid.js",
+  "scripts": {
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js"
+  },
+  "dependencies": {
+    "vue": "^2.4.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.22.0",
+    "connect-history-api-fallback": "^1.3.0",
+    "css-loader": "^0.28.0",
+    "cssnano": "^3.10.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-webpack": "^0.8.1",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eventsource-polyfill": "^0.9.6",
+    "friendly-errors-webpack-plugin": "^1.1.3",
+    "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "opn": "^5.1.0",
+    "ora": "^1.3.0",
+    "url-loader": "^0.5.9",
+    "vue-loader": "^12.1.0",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.18.0",
+    "webpack-merge": "^4.1.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.4.3"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie < 9"
+  ]
+}
