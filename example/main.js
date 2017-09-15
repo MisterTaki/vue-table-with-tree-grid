@@ -6,6 +6,8 @@ import ZkTable from '../src';
 
 Vue.config.productionTip = false;
 
+// Vue.component('zk-table', ZkTable);
+
 Vue.use(ZkTable);
 
 /* eslint-disable no-new */
