@@ -156,7 +156,7 @@
       },
       maxHeight: {
         type: [String, Number],
-        default: '',
+        default: 'auto',
       },
       stripe: {
         type: Boolean,
@@ -271,8 +271,10 @@
           const { clientWidth, clientHeight } = this.$el;
           this.computedWidth = clientWidth + 2;
           this.computedHeight = clientHeight + 2;
-          if (this.computedHeight > parseInt(this.maxHeight, 10)) {
-            this.bodyHeight = `${parseInt(this.maxHeight, 10) - 83}px`;
+
+          const maxHeight = parseInt(this.maxHeight, 10);
+          if (this.maxHeight !== 'auto' && this.computedHeight > maxHeight) {
+            this.bodyHeight = `${maxHeight - 83}px`;
           }
           this.tableColumns = initialColumns(this, clientWidth);
         });
