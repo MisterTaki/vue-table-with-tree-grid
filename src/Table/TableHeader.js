@@ -57,7 +57,7 @@ export default {
           onOn-change={ checked => this.toggleAllChecked(checked) }
           ></Checkbox>;
       }
-      return column.label;
+      return column.label ? column.label : '';
     }
 
     // Template
