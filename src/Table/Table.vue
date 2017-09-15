@@ -280,6 +280,9 @@
         });
       },
       getCheckedProp(prop = 'index') {
+        if (!this.selectionType) {
+          return [];
+        }
         const checkedIndexs = [];
         this.bodyData.forEach((item, index) => {
           if (item._isChecked) {
