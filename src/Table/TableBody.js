@@ -253,7 +253,7 @@ export default {
                   style={ getStyle.call(this, 'row', row, rowIndex) }
                   class={ getClassName.call(this, 'row', row, rowIndex) }
                   on-click={ $event => this.handleEvent($event, 'row', { row, rowIndex }) }
-                  on-dbclick={ $event => this.handleEvent($event, 'row', { row, rowIndex }) }
+                  on-dblclick={ $event => this.handleEvent($event, 'row', { row, rowIndex }) }
                   on-contextmenu={ $event => this.handleEvent($event, 'row', { row, rowIndex }) }
                   on-mouseenter={ $event => this.handleEvent($event, 'row', { row, rowIndex }, { hover: true }) }
                   on-mouseleave={ $event => this.handleEvent($event, 'row', { row, rowIndex }, { hover: false }) }>
