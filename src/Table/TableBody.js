@@ -51,7 +51,7 @@ export default {
     handleEvent($event, type, data, others) {
       const certainType = this.validateType(type, ['cell', 'row', 'checkbox', 'icon'], 'handleEvent');
       const eventType = $event ? $event.type : '';
-      const { row, rowIndex, columnIndex } = data;
+      const { row, rowIndex, column, columnIndex } = data;
       const latestData = this.table.bodyData;
       // Checkbox
       if (certainType.checkbox) {
@@ -63,7 +63,7 @@ export default {
             this.toggleStatus('Checked', latestData[childrenIndex[i]], childrenIndex[i], isChecked);
           }
         }
-        return this.table.$emit('checkbox-click', $event, latestData);
+        return this.table.$emit('checkbox-click', latestData[rowIndex], column, columnIndex, $event);
       }
       // Tree's icon
       if (certainType.icon) {
@@ -73,17 +73,13 @@ export default {
         for (let i = 0; i < childrenIndex.length; i++) {
           this.toggleStatus('Hide', latestData[childrenIndex[i]], childrenIndex[i]);
         }
-        return this.table.$emit('tree-icon-click', $event, latestData);
+        return this.table.$emit('tree-icon-click', latestData[rowIndex], column, columnIndex, $event);
       }
       if (certainType.cell && eventType === 'click') {
         // 点击扩展单元格
         if (this.isExpandCell(this.table, columnIndex)) {
           this.toggleStatus('Expanded', row, rowIndex);
-          return this.table.$emit('expand-cell-click', $event, latestData);
-        }
-        // 点击选择单元格
-        if (this.isSelectionCell(this.table, columnIndex)) {
-          return this.table.$emit('selection-cell-click', $event, latestData);
+          return this.table.$emit('expand-cell-click', latestData[rowIndex], column, columnIndex, $event);
         }
       }
       // 行：Hover
@@ -95,7 +91,7 @@ export default {
           _isHover: hover,
         });
       }
-      return this.table.$emit(`${type}-${eventType}`, $event, latestData);
+      return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], column, columnIndex, $event);
     },
   },
   render() {
