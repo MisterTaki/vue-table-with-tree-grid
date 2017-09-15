@@ -1,6 +1,6 @@
 {
   "name": "vue-table-with-tree-grid",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "vue-table-with-tree-grid",
   "author": "GaoQi <taki.gaoqi@outlook.com>",
   "main": "lib/vue-table-with-tree-grid.js",
