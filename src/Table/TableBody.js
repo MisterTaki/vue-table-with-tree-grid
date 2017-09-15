@@ -92,9 +92,9 @@ export default {
         });
       }
       if (certainType.cell) {
-        return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], column, columnIndex, $event);
+        return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], rowIndex, column, columnIndex, $event);
       }
-      return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], $event);
+      return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], rowIndex, $event);
     },
   },
   render() {
