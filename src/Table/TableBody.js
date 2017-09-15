@@ -91,7 +91,10 @@ export default {
           _isHover: hover,
         });
       }
-      return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], column, columnIndex, $event);
+      if (certainType.cell) {
+        return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], column, columnIndex, $event);
+      }
+      return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], $event);
     },
   },
   render() {
