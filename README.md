@@ -34,6 +34,8 @@ import ZkTable from 'vue-table-with-tree-grid'
 Vue.component(ZkTable.name, ZkTable)
 ```
 
+more information please see [example...](https://github.com/MisterTaki/vue-table-with-tree-gird/blob/master/example/Example.vue), or git clone this repository and open dev mode (I will give it a homepage later...).
+
 ## API
 
 ### Table Attributes
