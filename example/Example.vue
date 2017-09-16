@@ -21,12 +21,11 @@
       :tree-type="props.treeType"
       :is-fold="props.isFold"
       :expand-type="props.expandType"
-      :selection-type="props.selectionType"
-      @row-mouseenter="props.rowMouseenter"
-      @row-mouseleave="props.rowMouseleave"
-      @cell-click="props.cellClick">
+      :selection-type="props.selectionType">
       <template slot="$expand" scope="scope">
-        'ssss'
+        {{ `My name is ${scope.row.name},
+           this rowIndex is ${scope.rowIndex}.`
+         }}
       </template>
       <template slot="likes" scope="scope">
         {{ scope.row.likes.join(',') }}
