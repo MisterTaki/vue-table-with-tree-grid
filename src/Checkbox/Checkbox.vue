@@ -1,13 +1,9 @@
 <template lang="html">
   <label :class="`${prefixCls}-wrapper`">
     <span :class="checkboxClass">
-      <span :class="`${prefixCls}__icon`"></span>
-      <input
-        type="checkbox"
-        :class="`${prefixCls}__input`"
-        :disabled="disabled"
-        :checked="value"
-        @change="handleChange">
+      <span
+        :class="`${prefixCls}__inner`"
+        @click="toggle"></span>
     </span>
   </label>
 </template>
@@ -47,11 +43,11 @@
       },
     },
     methods: {
-      handleChange($event) {
+      toggle() {
         if (this.disabled) {
           return false;
         }
-        const value = $event.target.checked;
+        const value = !this.value;
         this.$emit('input', value);
         return this.$emit('on-change', value);
       },
