@@ -58,7 +58,7 @@ more information please see [example...](https://github.com/MisterTaki/vue-table
 | tree-type | 是否为树形表格 | Boolean | - | false |
 | children-prop | 树形表格中遍历的属性名称 | String | - | 'children' |
 | is-fold | 树形表格中父级是否默认折叠 | Boolean | - | true |
-| expand-type | 是否为展开行类型表格（为 True 时，需要添加名称为 '$expand' 的[作用域插槽](https://cn.vuejs.org/v2/guide/components.html#作用域插槽), 它可以获取到 row, rowIndex, column, columnIndex) | Boolean | - | false |
+| expand-type | 是否为展开行类型表格（为 True 时，需要添加名称为 '$expand' 的[作用域插槽](https://cn.vuejs.org/v2/guide/components.html#作用域插槽), 它可以获取到 row, rowIndex) | Boolean | - | false |
 | selection-type | 是否为多选类型表格 | Boolean | - | false |
 | row-key | 行数据的 Key，用来优化 Table 的渲染 | Function | row, rowIndex | rowIndex |
 | row-class-name | 额外的表格行的类名 | String, Function | row, rowIndex | - |
