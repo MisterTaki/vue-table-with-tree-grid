@@ -1,19 +1,30 @@
 <template lang="html">
   <div id="example">
+    <ul class="switch-list">
+      <li class="switch-item" v-for="item in propList">
+        <span>{{ item.name }}: </span>
+        <zk-switch v-model="props[item.name]"></zk-switch>
+      </li>
+    </ul>
     <zk-table
       ref="table"
+      sum-text="sum"
+      index-text="#"
       :data="data"
       :columns="columns"
-      :stripe="true"
-      :border="false"
-      :show-header="true"
-      :show-summary="false"
-      :show-row-hover="true"
-      :expandType="true"
-      :selectionType="true"
-      @row-mouseenter="rowMouseenter"
-      @row-mouseleave="rowMouseleave"
-      @cell-click="cellClick">
+      :stripe="props.stripe"
+      :border="props.border"
+      :show-header="props.showHeader"
+      :show-summary="props.showSummary"
+      :show-row-hover="props.showRowHover"
+      :show-index="props.showIndex"
+      :tree-type="props.treeType"
+      :is-fold="props.isFold"
+      :expand-type="props.expandType"
+      :selection-type="props.selectionType"
+      @row-mouseenter="props.rowMouseenter"
+      @row-mouseleave="props.rowMouseleave"
+      @cell-click="props.cellClick">
       <template slot="$expand" scope="scope">
         'ssss'
       </template>
@@ -25,60 +36,74 @@
 </template>
 
 <script>
+  import ZkSwitch from './Switch/Switch';
 
   export default {
     name: 'example',
+    components: {
+      ZkSwitch,
+    },
     data() {
       return {
-        checked: false,
-        expand: true,
+        props: {
+          stripe: false,
+          border: false,
+          showHeader: true,
+          showSummary: false,
+          showRowHover: true,
+          showIndex: false,
+          treeType: true,
+          isFold: true,
+          expandType: false,
+          selectionType: false,
+        },
         data: [
           {
-            name: '高琦1',
-            sex: '男',
-            likes: ['足球', '篮球'],
+            name: 'Jack',
+            sex: 'male',
+            likes: ['football', 'basketball'],
             score: 10,
             children: [
               {
-                name: 'sss1',
-                sex: '男',
-                likes: ['足球', '篮球'],
+                name: 'Ashley',
+                sex: 'female',
+                likes: ['football', 'basketball'],
                 score: 20,
                 children: [
                   {
-                    name: 'sss1',
-                    sex: '男',
-                    likes: ['足球', '篮球'],
+                    name: 'Ashley',
+                    sex: 'female',
+                    likes: ['football', 'basketball'],
                     score: 20,
                   },
                   {
-                    name: 'sss2',
-                    sex: '男',
-                    likes: ['足球', '篮球'],
+                    name: 'Taki',
+                    sex: 'male',
+                    likes: ['football', 'basketball'],
                     score: 10,
                     children: [
                       {
-                        name: 'sss1',
-                        sex: '男',
-                        likes: ['足球', '篮球'],
+                        name: 'Ashley',
+                        sex: 'female',
+                        likes: ['football', 'basketball'],
                         score: 20,
                       },
                       {
-                        name: 'sss2',
-                        sex: '男',
-                        likes: ['足球', '篮球'],
+                        name: 'Taki',
+                        sex: 'male',
+                        likes: ['football', 'basketball'],
                         score: 10,
                         children: [
                           {
-                            name: 'sss1',
-                            sex: '男',
-                            likes: ['足球', '篮球'],
+                            name: 'Ashley',
+                            sex: 'female',
+                            likes: ['football', 'basketball'],
                             score: 20,
                           },
                           {
-                            name: 'sss2',
-                            sex: '男',
-                            likes: ['足球', '篮球'],
+                            name: 'Taki',
+                            sex: 'male',
+                            likes: ['football', 'basketball'],
                             score: 10,
                           },
                         ],
@@ -88,55 +113,55 @@
                 ],
               },
               {
-                name: 'sss2',
-                sex: '男',
-                likes: ['足球', '篮球'],
+                name: 'Taki',
+                sex: 'male',
+                likes: ['football', 'basketball'],
                 score: 10,
               },
             ],
           },
           {
-            name: '高琦2',
-            sex: '男',
-            likes: ['LOL', '农药'],
+            name: 'Tom',
+            sex: 'male',
+            likes: ['football', 'basketball'],
             score: 20,
             children: [
               {
-                name: 'sss1',
-                sex: '男',
-                likes: ['足球', '篮球'],
+                name: 'Ashley',
+                sex: 'female',
+                likes: ['football', 'basketball'],
                 score: 20,
                 children: [
                   {
-                    name: 'sss1',
-                    sex: '男',
-                    likes: ['足球', '篮球'],
+                    name: 'Ashley',
+                    sex: 'female',
+                    likes: ['football', 'basketball'],
                     score: 20,
                   },
                   {
-                    name: 'sss2',
-                    sex: '男',
-                    likes: ['足球', '篮球'],
+                    name: 'Taki',
+                    sex: 'male',
+                    likes: ['football', 'basketball'],
                     score: 10,
                   },
                 ],
               },
               {
-                name: 'sss2',
-                sex: '男',
-                likes: ['足球', '篮球'],
+                name: 'Taki',
+                sex: 'male',
+                likes: ['football', 'basketball'],
                 score: 10,
                 children: [
                   {
-                    name: 'sss1',
-                    sex: '男',
-                    likes: ['足球', '篮球'],
+                    name: 'Ashley',
+                    sex: 'female',
+                    likes: ['football', 'basketball'],
                     score: 20,
                   },
                   {
-                    name: 'sss2',
-                    sex: '男',
-                    likes: ['足球', '篮球'],
+                    name: 'Taki',
+                    sex: 'male',
+                    likes: ['football', 'basketball'],
                     score: 10,
                   },
                 ],
@@ -144,27 +169,27 @@
             ],
           },
           {
-            name: '高琦2',
-            sex: '男',
-            likes: ['LOL', '农药'],
+            name: 'Tom',
+            sex: 'male',
+            likes: ['football', 'basketball'],
             score: 20,
           },
           {
-            name: '高琦2',
-            sex: '男',
-            likes: ['LOL', '农药'],
+            name: 'Tom',
+            sex: 'male',
+            likes: ['football', 'basketball'],
             score: 20,
             children: [
               {
-                name: 'sss1',
-                sex: '男',
-                likes: ['足球', '篮球'],
+                name: 'Ashley',
+                sex: 'female',
+                likes: ['football', 'basketball'],
                 score: 20,
               },
               {
-                name: 'sss2',
-                sex: '男',
-                likes: ['足球', '篮球'],
+                name: 'Taki',
+                sex: 'male',
+                likes: ['football', 'basketball'],
                 score: 10,
               },
             ],
@@ -172,47 +197,56 @@
         ],
         columns: [
           {
-            label: '姓名',
+            label: 'name',
             prop: 'name',
+          },
+          {
+            label: 'sex',
+            prop: 'sex',
             minWidth: '200px',
           },
           {
-            label: '性别',
-            prop: 'sex',
-            minWidth: '300px',
-          },
-          {
-            label: '分数',
+            label: 'score',
             prop: 'score',
-            minWidth: '300px',
+            minWidth: '200px',
           },
           {
-            label: '喜欢的',
+            label: 'likes',
             prop: 'likes',
             type: 'template',
             template: 'likes',
-            minWidth: '300px',
-          },
-          {
-            label: '操作',
-            type: 'template',
-            template: 'operation',
-            minWidth: '300px',
+            width: '500px',
           },
         ],
       };
     },
+    computed: {
+      propList() {
+        return Object.keys(this.props).map(item => ({
+          name: item,
+        }));
+      },
+    },
     methods: {
-      rowMouseenter() {
-      },
-      rowMouseleave() {
-      },
-      cellClick() {
-      },
+
     },
   };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
+  .switch-list {
+    margin: 20px 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .switch-item {
+    margin: 20px;
+    float: left;
+  }
 </style>
