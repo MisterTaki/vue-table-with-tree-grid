@@ -19,6 +19,7 @@
   "main": "lib/vue-table-with-tree-grid.js",
   "files": [
     "lib",
+    "example",
     "src"
   ],
   "license": "MIT",
