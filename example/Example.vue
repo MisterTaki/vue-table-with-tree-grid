@@ -198,23 +198,23 @@
           {
             label: 'name',
             prop: 'name',
+            width: '400px',
           },
           {
             label: 'sex',
             prop: 'sex',
-            minWidth: '200px',
+            minWidth: '50px',
           },
           {
             label: 'score',
             prop: 'score',
-            minWidth: '200px',
           },
           {
             label: 'likes',
             prop: 'likes',
+            minWidth: '200px',
             type: 'template',
             template: 'likes',
-            width: '500px',
           },
         ],
       };
