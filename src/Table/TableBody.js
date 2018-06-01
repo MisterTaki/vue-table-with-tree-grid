@@ -252,7 +252,7 @@ export default {
               [
                 <tr
                   v-show={ !row._isHide }
-                  key={ this.table.rowKey ? getKey(row, rowIndex) : rowIndex }
+                  key={ this.table.rowKey ? getKey.call(this, row, rowIndex) : rowIndex }
                   style={ getStyle.call(this, 'row', row, rowIndex) }
                   class={ getClassName.call(this, 'row', row, rowIndex) }
                   on-click={ $event => this.handleEvent($event, 'row', { row, rowIndex }) }
