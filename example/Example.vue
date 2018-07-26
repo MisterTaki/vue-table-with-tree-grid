@@ -22,12 +22,12 @@
       :is-fold="props.isFold"
       :expand-type="props.expandType"
       :selection-type="props.selectionType">
-      <template slot="$expand" scope="scope">
+      <template slot="$expand" slot-scope="scope">
         {{ `My name is ${scope.row.name},
            this rowIndex is ${scope.rowIndex}.`
          }}
       </template>
-      <template slot="likes" scope="scope">
+      <template slot="likes" slot-scope="scope">
         {{ scope.row.likes.join(',') }}
       </template>
     </zk-table>
