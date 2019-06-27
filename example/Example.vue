@@ -21,7 +21,6 @@
       :tree-type="props.treeType"
       :is-fold="props.isFold"
       :expand-type="props.expandType"
-      :max-height="200"
       :selection-type="props.selectionType">
       <template slot="$expand" scope="scope">
         {{ `My name is ${scope.row.name},

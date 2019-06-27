@@ -284,6 +284,7 @@ export default {
     },
     // computedWidth, computedHeight, tableColumns
     measure() {
+      window.console.log('measure');
       this.$nextTick(() => {
         const { clientWidth, clientHeight } = this.$el;
         this.computedWidth = clientWidth + 2;
@@ -322,7 +323,9 @@ export default {
     },
   },
   updated() {
-    this.measure();
+    // eslint-disable-next-line no-console
+    console.log('update');
+    // this.measure();
   },
   mounted() {
     this.measure();

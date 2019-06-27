@@ -128,7 +128,7 @@ export default {
         }
       }
       // 行：Hover
-      if (
+      /* if (
         certainType.row &&
         (eventType === 'mouseenter' || eventType === 'mouseleave')
       ) {
@@ -138,7 +138,7 @@ export default {
           ...target,
           _isHover: hover,
         });
-      }
+      } */
       if (certainType.cell) {
         return this.table.$emit(
           `${type}-${eventType}`,
@@ -370,34 +370,9 @@ export default {
             this.table.bodyData.map((row, rowIndex) => [
               <tr
                 v-show={!row._isHide}
-                key={this.table.rowKey ? getKey(row, rowIndex) : rowIndex}
+                key={this.table.rowKey ? getKey.call(row, rowIndex) : rowIndex}
                 style={getStyle.call(this, 'row', row, rowIndex)}
                 class={getClassName.call(this, 'row', row, rowIndex)}
-                on-click={$event =>
-                  this.handleEvent($event, 'row', { row, rowIndex })
-                }
-                on-dblclick={$event =>
-                  this.handleEvent($event, 'row', { row, rowIndex })
-                }
-                on-contextmenu={$event =>
-                  this.handleEvent($event, 'row', { row, rowIndex })
-                }
-                on-mouseenter={$event =>
-                  this.handleEvent(
-                    $event,
-                    'row',
-                    { row, rowIndex },
-                    { hover: true },
-                  )
-                }
-                on-mouseleave={$event =>
-                  this.handleEvent(
-                    $event,
-                    'row',
-                    { row, rowIndex },
-                    { hover: false },
-                  )
-                }
               >
                 {this.table.tableColumns.map((column, columnIndex) => (
                   <td
@@ -417,46 +392,6 @@ export default {
                       column,
                       columnIndex,
                     )}
-                    on-click={$event =>
-                      this.handleEvent($event, 'cell', {
-                        row,
-                        rowIndex,
-                        column,
-                        columnIndex,
-                      })
-                    }
-                    on-dblclick={$event =>
-                      this.handleEvent($event, 'cell', {
-                        row,
-                        rowIndex,
-                        column,
-                        columnIndex,
-                      })
-                    }
-                    on-contextmenu={$event =>
-                      this.handleEvent($event, 'cell', {
-                        row,
-                        rowIndex,
-                        column,
-                        columnIndex,
-                      })
-                    }
-                    on-mouseenter={$event =>
-                      this.handleEvent($event, 'cell', {
-                        row,
-                        rowIndex,
-                        column,
-                        columnIndex,
-                      })
-                    }
-                    on-mouseleave={$event =>
-                      this.handleEvent($event, 'cell', {
-                        row,
-                        rowIndex,
-                        column,
-                        columnIndex,
-                      })
-                    }
                   >
                     <div
                       class={getClassName.call(
