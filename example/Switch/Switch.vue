@@ -8,45 +8,46 @@
 </template>
 
 <script>
-  export default {
-    name: 'zk-switch',
-    props: {
-      value: {
-        type: Boolean,
-        default: false,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
+/* eslint linebreak-style: ["error", "windows"] */
+export default {
+  name: 'zk-switch',
+  props: {
+    value: {
+      type: Boolean,
+      default: false,
     },
-    data() {
-      return {
-        prefixCls: 'zk-switch',
-      };
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-    computed: {
-      switchClass() {
-        return [
-          `${this.prefixCls}`,
-          {
-            [`${this.prefixCls}--checked`]: this.value,
-            [`${this.prefixCls}--disabled`]: this.disabled,
-          },
-        ];
-      },
+  },
+  data() {
+    return {
+      prefixCls: 'zk-switch',
+    };
+  },
+  computed: {
+    switchClass() {
+      return [
+        `${this.prefixCls}`,
+        {
+          [`${this.prefixCls}--checked`]: this.value,
+          [`${this.prefixCls}--disabled`]: this.disabled,
+        },
+      ];
     },
-    methods: {
-      toggle() {
-        if (this.disabled) {
-          return false;
-        }
-        const value = !this.value;
-        this.$emit('input', value);
-        return this.$emit('on-change', value);
-      },
+  },
+  methods: {
+    toggle() {
+      if (this.disabled) {
+        return false;
+      }
+      const value = !this.value;
+      this.$emit('input', value);
+      return this.$emit('on-change', value);
     },
-  };
+  },
+};
 </script>
 
 <style lang="less" src="./Switch.less"></style>

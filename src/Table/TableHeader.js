@@ -1,4 +1,5 @@
-import Checkbox from '../Checkbox/Checkbox'; // eslint-disable-line
+/* eslint linebreak-style: ["error", "windows"] */
+import Checkbox from "../Checkbox/Checkbox"; // eslint-disable-line
 import { mixins } from './utils';
 
 /* eslint-disable no-underscore-dangle */
@@ -6,9 +7,7 @@ export default {
   name: 'zk-table__header',
   mixins: [mixins],
   data() {
-    return {
-
-    };
+    return {};
   },
   computed: {
     table() {
@@ -26,7 +25,11 @@ export default {
   render() {
     // className
     function getClassName(type, { headerAlign, prop }) {
-      const certainType = this.validateType(type, ['cell', 'inner'], 'getClassName');
+      const certainType = this.validateType(
+        type,
+        ['cell', 'inner'],
+        'getClassName',
+      );
       const classList = [];
       if (certainType.cell) {
         classList.push(`${this.prefixCls}__header-cell`);
@@ -50,33 +53,43 @@ export default {
     function renderLabel(column, columnIndex) {
       if (this.isSelectionCell(this.table, columnIndex)) {
         const allCheck = this.table.bodyData.every(row => row._isChecked);
-        const indeterminate = !allCheck && this.table.bodyData.some(row => row._isChecked);
-        return <Checkbox
-          indeterminate={ indeterminate }
-          value={ allCheck }
-          onOn-change={ checked => this.toggleAllChecked(checked) }
-          ></Checkbox>;
+        const indeterminate =
+          !allCheck && this.table.bodyData.some(row => row._isChecked);
+        return (
+          <Checkbox
+            indeterminate={indeterminate}
+            value={allCheck}
+            onOn-change={checked => this.toggleAllChecked(checked)}
+          />
+        );
       }
       return column.label ? column.label : '';
     }
 
     // Template
     return (
-      <table cellspacing="0" cellpadding="0" border="0" class={ `${this.prefixCls}__header` }>
+      <table
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        class={`${this.prefixCls}__header`}
+      >
         <colgroup>
-          { this.table.tableColumns.map(column =>
-            <col width={ column.computedWidth || column.minWidth || column.width }></col>)
-          }
+          {this.table.tableColumns.map(column => (
+            <col
+              width={column.computedWidth || column.minWidth || column.width}
+            />
+          ))}
         </colgroup>
         <thead>
-          <tr class={ `${this.prefixCls}__header-row` }>
-            { this.table.tableColumns.map((column, columnIndex) =>
-                <th class={ getClassName.call(this, 'cell', column) }>
-                  <div class={ getClassName.call(this, 'inner', column) }>
-                    { renderLabel.call(this, column, columnIndex) }
-                  </div>
-                </th>)
-            }
+          <tr class={`${this.prefixCls}__header-row`}>
+            {this.table.tableColumns.map((column, columnIndex) => (
+              <th class={getClassName.call(this, 'cell', column)}>
+                <div class={getClassName.call(this, 'inner', column)}>
+                  {renderLabel.call(this, column, columnIndex)}
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
       </table>

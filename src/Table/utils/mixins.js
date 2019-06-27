@@ -1,3 +1,4 @@
+/* eslint linebreak-style: ["error", "windows"] */
 export default {
   data() {
     return {
@@ -6,7 +7,11 @@ export default {
   },
   methods: {
     validateType(type, validTypes, funcName, isReturn = true) {
-      if (validTypes.indexOf(type) < 0) throw new Error(`${funcName}'s type must is ${validTypes.join(' or ')}.`);
+      if (validTypes.indexOf(type) < 0) {
+        throw new Error(
+          `${funcName}'s type must is ${validTypes.join(' or ')}.`,
+        );
+      }
       if (isReturn) {
         const certainType = {};
         validTypes.forEach((item) => {
@@ -17,17 +22,19 @@ export default {
       return true;
     },
     isExpandCell(table, columnIndex) {
-      return table.expandType && (
-        (table.showIndex && columnIndex === 1) ||
-        (!table.showIndex && columnIndex === 0)
+      return (
+        table.expandType &&
+        ((table.showIndex && columnIndex === 1) ||
+          (!table.showIndex && columnIndex === 0))
       );
     },
     isSelectionCell(table, columnIndex) {
-      return table.selectionType && (
-        (table.showIndex && table.expandType && columnIndex === 2) ||
-        (!table.showIndex && table.expandType && columnIndex === 1) ||
-        (table.showIndex && !table.expandType && columnIndex === 1) ||
-        (!table.showIndex && !table.expandType && columnIndex === 0)
+      return (
+        table.selectionType &&
+        ((table.showIndex && table.expandType && columnIndex === 2) ||
+          (!table.showIndex && table.expandType && columnIndex === 1) ||
+          (table.showIndex && !table.expandType && columnIndex === 1) ||
+          (!table.showIndex && !table.expandType && columnIndex === 0))
       );
     },
   },

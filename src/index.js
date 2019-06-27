@@ -1,3 +1,4 @@
+/* eslint linebreak-style: ["error", "windows"] */
 import ZkTable from './Table/Table';
 
 ZkTable.install = (Vue) => {
