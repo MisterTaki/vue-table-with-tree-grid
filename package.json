@@ -28,6 +28,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "popper.js": "^1.15.0",
     "vue": "^2.4.3"
   },
   "devDependencies": {
@@ -81,5 +82,13 @@
     "> 1%",
     "last 2 versions",
     "not ie < 9"
-  ]
+  ],
+  "rules": {
+    "linebreak-style": 0,
+    "eslint linebreak-style": [
+      0,
+      "error",
+      "windows"
+    ]
+  }
 }

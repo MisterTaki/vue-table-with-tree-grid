@@ -16,17 +16,13 @@
       :border="props.border"
       :show-header="props.showHeader"
       :show-summary="props.showSummary"
-      :show-row-hover="props.showRowHover"
-      :show-index="props.showIndex"
       :tree-type="props.treeType"
       :is-fold="props.isFold"
-      :expand-type="props.expandType"
-      :selection-type="props.selectionType">
-      <template slot="$expand" scope="scope">
-        {{ `My name is ${scope.row.name},
-           this rowIndex is ${scope.rowIndex}.`
-         }}
-      </template>
+      :expand-type="false"
+      :selection-type="false">
+      <template slot="name" scope="scope">
+  <b>{{ scope.row.name }}</b>
+</template>
       <template slot="likes" scope="scope">{{ scope.row.likes.join(',') }}</template>
     </zk-table>
   </div>
@@ -48,23 +44,19 @@ export default {
         border: true,
         showHeader: true,
         showSummary: false,
-        showRowHover: true,
-        showIndex: false,
         treeType: true,
         isFold: true,
-        expandType: false,
-        selectionType: false,
       },
       data: [
         {
           name: 'Jack',
-          sex: 'male',
+          sex: 'madfsdfgsdfgkjaasdfasdfasdfasdfasdfasdfsdhklasdhfskladfle',
           likes: ['football', 'basketball'],
           score: 10,
           children: [
             {
               name: 'Ashley',
-              sex: 'female',
+              sex: 'femaleersdfgsdfgsdfgsdfhgjdfgsdfgsdfgsdfg',
               likes: ['football', 'basketball'],
               score: 20,
               children: [
@@ -198,11 +190,15 @@ export default {
           label: 'name',
           prop: 'name',
           width: '400px',
+          type: 'template',
+          template: 'name',
+          tooltip: true,
         },
         {
           label: 'sex',
           prop: 'sex',
           minWidth: '50px',
+          tooltip: true,
         },
         {
           label: 'score',

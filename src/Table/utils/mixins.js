@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 export default {
   data() {
     return {

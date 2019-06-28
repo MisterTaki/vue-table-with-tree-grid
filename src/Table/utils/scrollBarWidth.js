@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import Vue from 'vue';
 
 let scrollBarWidth;

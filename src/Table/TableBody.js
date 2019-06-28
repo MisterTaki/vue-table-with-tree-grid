@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import Checkbox from "../Checkbox/Checkbox"; // eslint-disable-line
 import { mixins } from './utils';
 
@@ -127,18 +126,6 @@ export default {
           );
         }
       }
-      // 行：Hover
-      /* if (
-        certainType.row &&
-        (eventType === 'mouseenter' || eventType === 'mouseleave')
-      ) {
-        const { hover } = others;
-        const target = latestData[rowIndex];
-        latestData.splice(rowIndex, 1, {
-          ...target,
-          _isHover: hover,
-        });
-      } */
       if (certainType.cell) {
         return this.table.$emit(
           `${type}-${eventType}`,
@@ -242,54 +229,13 @@ export default {
       if (this.isExpandCell(this.table, columnIndex)) {
         return <i class="zk-icon zk-icon-angle-right" />;
       }
-      // SelectionType's Checkbox
-      if (this.isSelectionCell(this.table, columnIndex)) {
-        let allCheck;
-        let childrenIndex;
-        const hasChildren = row._childrenLen > 0;
-        if (hasChildren) {
-          childrenIndex = this.getChildrenIndex(row._level, rowIndex, false);
-          allCheck = true;
-          for (let i = 0; i < childrenIndex.length; i++) {
-            if (!this.table.bodyData[childrenIndex[i]]._isChecked) {
-              allCheck = false;
-              break;
-            }
-          }
-        } else {
-          allCheck = row._isChecked;
-        }
-        let indeterminate = false;
-        if (hasChildren && !allCheck) {
-          for (let i = 0; i < childrenIndex.length; i++) {
-            if (this.table.bodyData[childrenIndex[i]]._isChecked) {
-              indeterminate = true;
-              break;
-            }
-          }
-        }
-        return (
-          <Checkbox
-            indeterminate={indeterminate}
-            value={allCheck}
-            onOn-change={isChecked =>
-              this.handleEvent(
-                null,
-                'checkbox',
-                { row, rowIndex, column, columnIndex },
-                { isChecked },
-              )
-            }
-          />
-        );
-      }
       // Tree's firstProp
       if (this.table.treeType && this.table.firstProp === column.prop) {
         return (
           <span
             class={`${this.prefixCls}--level-${row._level}-cell`}
             style={{
-              marginLeft: `${(row._level - 1) * 24}px`,
+              marginLeft: `${(row._level - 1) * 10}px`,
               paddingLeft: row._childrenLen === 0 ? '20px' : '',
             }}
           >
@@ -308,7 +254,20 @@ export default {
                 }
               />
             )}
-            {column.type === 'template'
+            {column.type === 'template' && column.tooltip && (
+              <div
+                class="truncate"
+                v-tooltip={{ content: `${row[column.prop]}` }}
+              >
+                {this.table.$scopedSlots[column.template]({
+                  row,
+                  rowIndex,
+                  column,
+                  columnIndex,
+                })}
+              </div>
+            )}
+            {column.type === 'template' && !column.tooltip
               ? this.table.$scopedSlots[column.template]({
                 row,
                 rowIndex,
@@ -316,9 +275,21 @@ export default {
                 columnIndex,
               })
               : ''}
-
+            {column.type === undefined && column.tooltip && (
+              <div
+                class="truncate"
+                v-tooltip={{ content: `${row[column.prop]}` }}
+              >
+                {// eslint-disable-next-line no-nested-ternary
+                column.type === undefined
+                  ? row[column.prop]
+                    ? row[column.prop]
+                    : ''
+                  : ''}
+              </div>
+            )}
             {// eslint-disable-next-line no-nested-ternary
-            column.type === undefined
+            column.type === undefined && column.tooltip === undefined
               ? row[column.prop]
                 ? row[column.prop]
                 : ''
@@ -336,6 +307,16 @@ export default {
         return '';
       }
       if (column.type === undefined || column.type === 'custom') {
+        if (column.tooltip) {
+          return (
+            <div
+              class="truncate"
+              v-tooltip={{ content: `${row[column.prop]}` }}
+            >
+              {row[column.prop] ? row[column.prop] : ''}
+            </div>
+          );
+        }
         return row[column.prop];
       } else if (column.type === 'template') {
         return this.table.$scopedSlots[column.template]

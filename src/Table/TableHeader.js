@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import Checkbox from "../Checkbox/Checkbox"; // eslint-disable-line
 import { mixins } from './utils';
 

@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import { mixins } from './utils';
 
 /* eslint-disable no-underscore-dangle */
