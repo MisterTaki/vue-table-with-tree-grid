@@ -28,6 +28,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "global": "^4.4.0",
+    "json-server": "^0.15.0",
     "popper.js": "^1.15.0",
     "vue": "^2.4.3"
   },
