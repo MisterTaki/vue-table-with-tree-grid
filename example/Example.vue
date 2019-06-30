@@ -23,7 +23,6 @@
         <div class="text-center">
           <button>+</button>
           <button v-tooltip="{content: 'Editar'}">Editar</button>
-          <button>Editar</button>
           <button v-if="scope.row._level > 1">Eliminar</button>
         </div>
       </template>
