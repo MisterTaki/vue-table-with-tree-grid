@@ -154,7 +154,7 @@ function initialColumns(table, clientWidth) {
 }
 
 export default {
-  name: 'zk-table',
+  name: 'safe-treeview',
   mixins: [mixins],
   components: {
     TableHeader,

@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      prefixCls: 'zk-table',
+      prefixCls: 'safe-treeview',
     };
   },
   methods: {

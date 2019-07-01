@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="example">
-    <zk-table
+    <safe-treeview
       ref="table"
       sum-text="sum"
       index-text="#"
@@ -20,13 +20,13 @@
         <b>{{ scope.row.name }}</b>
       </template>
       <template slot="actions" scope="scope">
-        <div class="text-center">
-          <button>+</button>
-          <button v-tooltip="{content: 'Editar'}">Editar</button>
-          <button v-if="scope.row._level > 1">Eliminar</button>
-        </div>
-      </template>
-    </zk-table>
+  <div class="text-center">
+    <button>+</button>
+    <button v-tooltip="{content: 'Editar'}">Editar</button>
+    <button v-if="scope.row._level > 1">Eliminar</button>
+  </div>
+</template>
+    </safe-treeview>
   </div>
 </template>
 
@@ -43,7 +43,7 @@ class TrainingPlan {
     totalInitialBudget,
     coordinador,
     state,
-    ) {
+  ) {
     this.id = id;
     this.name = name;
     this.startDate = startDate;
@@ -157,8 +157,12 @@ export default {
       if (curentLevel <= 4) {
         node[levelName].forEach((element) => {
           level.setChildren(
-            this.buildTreeView(element, curentLevel + 1, curentLevel === 4 ? node.name : null),
-            );
+            this.buildTreeView(
+              element,
+              curentLevel + 1,
+              curentLevel === 4 ? node.name : null,
+            ),
+          );
         });
       }
       return level;

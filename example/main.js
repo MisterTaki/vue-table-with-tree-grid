@@ -3,13 +3,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Example from './Example';
-import ZkTable from '../src';
+import SafeTreeview from '../src';
 
 Vue.config.productionTip = false;
 
 // Vue.component(ZkTable.name, ZkTable);
 
-Vue.use(ZkTable);
+Vue.use(SafeTreeview);
 
 /* eslint-disable no-new */
 new Vue({

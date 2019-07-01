@@ -1,46 +1,38 @@
-# vue-table-with-tree-grid
+# vue-tree-view-table
 
-> A table (with tree-grid) component for Vue.js 2.0. (Its style extends [@iView](https://github.com/iview/iview))
-
-## Example
-
-![Example](./example/example.gif)
+> A table (with tree-grid) component for Vue.js 2.0. (Its style extends [vue-table-with-tree-grid](https://github.com/MisterTaki/vue-table-with-tree-grid))
 
 ## Installation
 
 Use npm:
 
 ```shell
-npm i vue-table-with-tree-grid -S
+npm i vue-tree-view-table -S
 ```
 
 Or use yarn:
 
 ```shell
-yarn add vue-table-with-tree-grid
+yarn add vue-tree-view-table
 ```
 
 ## Usage
 
 ```javascript
 import Vue from 'vue'
-import ZkTable from 'vue-table-with-tree-grid'
+import SafeTreeview from 'vue-tree-view-table'
 
-Vue.use(ZkTable)
+Vue.use(SafeTreeview)
 ```
 
 Or
 
 ```javascript
 import Vue from 'vue'
-import ZkTable from 'vue-table-with-tree-grid'
+import SafeTreeview from 'vue-tree-view-table'
 
-Vue.component(ZkTable.name, ZkTable)
+Vue.component(SafeTreeview.name, SafeTreeview)
 ```
-
-more information please see [example...](https://github.com/MisterTaki/vue-table-with-tree-gird/blob/master/example/Example.vue), or git clone this repository and open dev mode (I will give it a homepage later...).
-
-## API
 
 ### Table Attributes
 
