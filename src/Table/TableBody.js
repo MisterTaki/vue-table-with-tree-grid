@@ -261,49 +261,17 @@ export default {
                   )
                 }
               />
-            )}{' '}
-            {column.type === 'template' && column.tooltip && (
-              <div
-                class="truncate"
-                v-tooltip={{
-                  content: `${row[column.prop]}`,
-                }}
-              >
-                {' '}
-                {this.table.$scopedSlots[column.template]({
-                  row,
-                  rowIndex,
-                  column,
-                  columnIndex,
-                })}{' '}
-              </div>
-            )}{' '}
-            {column.type === 'template' && !column.tooltip
+            )}
+            {column.type === 'template'
               ? this.table.$scopedSlots[column.template]({
                 row,
                 rowIndex,
                 column,
                 columnIndex,
               })
-              : ''}{' '}
-            {column.type === undefined && column.tooltip && (
-              <div
-                class="truncate"
-                v-tooltip={{
-                  content: `${row[column.prop]}`,
-                }}
-              >
-                {' '}
-                {// eslint-disable-next-line no-nested-ternary
-                column.type === undefined
-                  ? row[column.prop]
-                    ? row[column.prop]
-                    : ''
-                  : ''}{' '}
-              </div>
-            )}{' '}
+              : ''}
             {// eslint-disable-next-line no-nested-ternary
-            column.type === undefined && column.tooltip === undefined
+            column.type === undefined
               ? row[column.prop]
                 ? row[column.prop]
                 : ''
@@ -324,7 +292,7 @@ export default {
         if (column.tooltip) {
           return (
             <div
-              class="truncate"
+              class={`${this.prefixCls}--truncate`}
               v-tooltip={{
                 content: `${row[column.prop]}`,
               }}

@@ -13,19 +13,12 @@
       :tree-type="props.treeType"
       :is-fold="props.isFold"
       :expand-type="false"
-      :max-height="400"
+      :max-height="600"
       emptyText="No se han encontrado resultados"
       :selection-type="false">
       <template slot="name" scope="scope">
-        <b>{{ scope.row.name }}</b>
+        <span>{{ scope.row.name }}</span>
       </template>
-      <template slot="actions" scope="scope">
-  <div class="text-center">
-    <button>+</button>
-    <button v-tooltip="{content: 'Editar'}">Editar</button>
-    <button v-if="scope.row._level > 1">Eliminar</button>
-  </div>
-</template>
     </safe-treeview>
   </div>
 </template>
@@ -80,11 +73,13 @@ export default {
           prop: 'name',
           label: 'Nombre',
           width: '350',
-          tooltip: true,
+          type: 'template',
+          template: 'name',
         },
         {
           prop: 'coordinador',
           label: 'Coordinador',
+          tooltip: true,
         },
         {
           prop: 'startDate',
@@ -118,12 +113,6 @@ export default {
         {
           prop: 'totalVacancies',
           label: 'P. totales',
-        },
-        {
-          prop: 'actions',
-          label: 'Acciones',
-          type: 'template',
-          template: 'actions',
         },
       ],
     };
@@ -175,16 +164,5 @@ export default {
 * {
   margin: 0;
   padding: 0;
-}
-
-.switch-list {
-  margin: 20px 0;
-  list-style: none;
-  overflow: hidden;
-}
-
-.switch-item {
-  margin: 20px;
-  float: left;
 }
 </style>

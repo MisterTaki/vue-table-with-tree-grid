@@ -36,24 +36,24 @@ Vue.component(SafeTreeview.name, SafeTreeview)
 
 ### Table Attributes
 
-| 属性 | 说明 | 类型 | 参数 | 默认值 |
+| Atributo | Descripción | tipo | Parametro | Valor por defecto |
 | ---- | ---- | ---- | ---- | ---- |
-| data | 表格各行的数据 | Array | - | [] |
-| empty-text | 表格数据为空时显示的文字 | String | - | '暂无数据' |
-| columns | 表格各列的配置（具体见下文：Columns Configs） | Array | - | [] |
-| show-header | 是否显示表头 | Boolean | - | true |
-| show-index | 是否显示数据索引 | Boolean | - | false |
-| index-text | 数据索引名称 | String | - | '序号' |
-| show-summary | 是否显示表尾合计行 | Boolean | - | false |
-| sum-text | 表尾合计行首列名称 | String | - | '合计' |
-| summary-method | 表尾合计行计算方法 | Function | data, column, columnIndex | - |
-| max-height | 最大高度 | [String, Number] | - | 'auto' |
-| stripe | 是否显示间隔斑马纹 | Boolean | - | false |
-| border | 是否显示纵向边框 | Boolean | - | false |
-| show-row-hover | 鼠标悬停时，是否高亮当前行 | Boolean | - | true |
-| tree-type | 是否为树形表格 | Boolean | - | false |
-| children-prop | 树形表格中遍历的属性名称 | String | - | 'children' |
-| is-fold | 树形表格中父级是否默认折叠 | Boolean | - | true |
+| data | datos a mostrar | Array | - | [] |
+| empty-text | texto a mostrar cuando no tiene datos | String | - | 'Aun no hay datos' |
+| columns | configuracion de las columnas de la tabla（ver abajo：Columns Configs） | Array | - | [] |
+| show-header | si se muestra el encabezado | Boolean | - | true |
+| show-index | si se muestra el indice de datos | Boolean | - | false |
+| index-text | nombre del indice de datos | String | - | 'index' |
+| show-summary | si se muestra el final total de la tabla | Boolean | - | false |
+| sum-text | suma total de la primera fila  | String | - | 'total' |
+| summary-method | Método de calculo de suma | Function | data, column, columnIndex | - |
+| max-height | Tamaño maximo de la tabla | [String, Number] | - | 'auto' |
+| stripe | si se muestra el color en intervalo de las filas | Boolean | - | false |
+| border | si la tabla tiene bordes | Boolean | - | false |
+| show-row-hover | si se colorea cuando pase el cursor por encima | Boolean | - | true |
+| tree-type | si es tipo árbol o no | Boolean | - | false |
+| children-prop | nombre de la propiedad que contiene los hijos | String | - | 'children' |
+| is-fold | si se muestra plegado | Boolean | - | true |
 | expand-type | 是否为展开行类型表格（为 True 时，需要添加名称为 '$expand' 的[作用域插槽](https://cn.vuejs.org/v2/guide/components.html#作用域插槽), 它可以获取到 row, rowIndex) | Boolean | - | false |
 | selection-type | 是否为多选类型表格 | Boolean | - | false |
 | row-key | 行数据的 Key，用来优化 Table 的渲染 | Function | row, rowIndex | rowIndex |
@@ -79,17 +79,9 @@ Vue.component(SafeTreeview.name, SafeTreeview)
 
 | 事件名 | 说明 | 参数 |
 | ---- | ---- | ---- |
-| cell-click | 单击某一单元格 | row, rowIndex, column, columnIndex, $event |
-| cell-dblclick | 双击某一单元格 | row, rowIndex, column, columnIndex, $event  |
 | cell-contextmenu | 在某一单元格上点击鼠标右键 | row, rowIndex, column, columnIndex, $event  |
-| cell-mouseenter | 鼠标滑入某一单元格 | row, rowIndex, column, columnIndex, $event  |
-| cell-mouseleave | 鼠标滑出某一单元格 | row, rowIndex, column, columnIndex, $event  |
 | row-click | 单击某一行 | row, rowIndex, $event |
-| row-dblclick | 双击某一行 | row, rowIndex, $event |
 | row-contextmenu | 在某一行上点击鼠标右键 | row, rowIndex, $event |
-| row-mouseenter | 鼠标滑入某一行 | row, rowIndex, $event |
-| row-mouseleave | 鼠标滑出某一行 | row, rowIndex, $event |
-| checkbox-click | 鼠标单击checkbox | row, rowIndex, $event |
 | tree-icon-click | 鼠标单击树形icon | row, rowIndex, $event |
 | expand-cell-click | 鼠标单击展开单元格 | row, rowIndex, $event |
 

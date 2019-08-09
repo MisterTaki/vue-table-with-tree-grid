@@ -204,7 +204,7 @@ export default {
     },
     emptyText: {
       type: String,
-      default: '暂无数据',
+      default: 'Aún no hay datos',
     },
     showHeader: {
       type: Boolean,
@@ -216,7 +216,7 @@ export default {
     },
     indexText: {
       type: String,
-      default: '序号',
+      default: 'index',
     },
     showSummary: {
       type: Boolean,
@@ -224,7 +224,7 @@ export default {
     },
     sumText: {
       type: String,
-      default: '合计',
+      default: 'total',
     },
     summaryMethod: Function,
     showRowHover: {
@@ -283,7 +283,6 @@ export default {
     },
     // computedWidth, computedHeight, tableColumns
     measure() {
-      window.console.log('measure');
       this.$nextTick(() => {
         const { clientWidth, clientHeight } = this.$el;
         this.computedWidth = clientWidth + 2;
@@ -320,11 +319,6 @@ export default {
         Object.assign(this.$data, initialState(this));
       },
     },
-  },
-  updated() {
-    // eslint-disable-next-line no-console
-    console.log('update');
-    // this.measure();
   },
   mounted() {
     this.measure();

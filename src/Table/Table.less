@@ -14,15 +14,15 @@
 .vue-tooltip {
   background-color: @popper-background-color;
   box-sizing: border-box;
+  white-space: nowrap;
   color: #fff;
-  // min-width: 120px;
   max-width: 320px;
   padding: 6px 10px;
   border-radius: 3px;
   z-index: 100;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-  white-space: normal;
   text-align: center;
+  word-break: break-word;
 
   &.vue-tooltip-hidden {
     transform: translateX(-100000px) !important;
@@ -228,7 +228,7 @@
 .@{prefixCls}--expand-content {
   padding: 20px;
 }
-.truncate {
+.@{prefixCls}--truncate {
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
