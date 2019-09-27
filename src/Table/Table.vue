@@ -40,11 +40,8 @@ import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import { mixins, scrollBarWidth as getSbw } from './utils';
 
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-param-reassign */
-
 function getBodyData(data, isTreeType, childrenProp, isFold, level = 1) {
-  let bodyData = [];
+  const bodyData = [];
   data.forEach((row, index) => {
     const children = row[childrenProp];
     const childrenLen =
@@ -64,7 +61,8 @@ function getBodyData(data, isTreeType, childrenProp, isFold, level = 1) {
     });
     if (isTreeType) {
       if (childrenLen > 0) {
-        bodyData = bodyData.concat(
+        Array.prototype.push.apply(
+          bodyData,
           getBodyData(children, true, childrenProp, isFold, level + 1),
         );
       }
@@ -145,10 +143,12 @@ function initialColumns(table, clientWidth) {
     const extraWidth = clientWidth - totalWidth;
     const averageExtraWidth = Math.floor(extraWidth / minWidthColumns.length);
     minWidthColumns.forEach((column) => {
+      // eslint-disable-next-line no-param-reassign
       column.computedWidth = column.minWidth + averageExtraWidth;
     });
   }
   const tableColumns = otherColumns.concat(minWidthColumns);
+  // eslint-disable-next-line no-underscore-dangle
   tableColumns.sort((a, b) => a._index - b._index);
   return tableColumns;
 }
@@ -301,6 +301,7 @@ export default {
       }
       const checkedIndexs = [];
       this.bodyData.forEach((item, index) => {
+        // eslint-disable-next-line no-underscore-dangle
         if (item._isChecked) {
           if (prop === 'index') {
             checkedIndexs.push(index);
