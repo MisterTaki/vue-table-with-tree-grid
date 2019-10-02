@@ -79,7 +79,6 @@ export default {
         {
           prop: 'coordinador',
           label: 'Coordinador',
-          tooltip: true,
         },
         {
           prop: 'startDate',

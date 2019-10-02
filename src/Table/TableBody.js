@@ -289,19 +289,6 @@ export default {
         return '';
       }
       if (column.type === undefined || column.type === 'custom') {
-        if (column.tooltip) {
-          return (
-            <div
-              class={`${this.prefixCls}--truncate`}
-              v-tooltip={{
-                content: `${row[column.prop]}`,
-              }}
-            >
-              {' '}
-              {row[column.prop] ? row[column.prop] : ''}{' '}
-            </div>
-          );
-        }
         return row[column.prop];
       } else if (column.type === 'template') {
         return this.table.$scopedSlots[column.template]
