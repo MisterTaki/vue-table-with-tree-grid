@@ -1,12 +1,6 @@
 <template lang="html">
   <div id="example">
-    <ul class="switch-list">
-      <li class="switch-item" v-for="item in propList">
-        <span>{{ item.name }}: </span>
-        <zk-switch v-model="props[item.name]"></zk-switch>
-      </li>
-    </ul>
-    <zk-table
+    <safe-treeview
       ref="table"
       sum-text="sum"
       index-text="#"
@@ -16,236 +10,158 @@
       :border="props.border"
       :show-header="props.showHeader"
       :show-summary="props.showSummary"
-      :show-row-hover="props.showRowHover"
-      :show-index="props.showIndex"
       :tree-type="props.treeType"
       :is-fold="props.isFold"
-      :expand-type="props.expandType"
-      :selection-type="props.selectionType">
-      <template slot="$expand" scope="scope">
-        {{ `My name is ${scope.row.name},
-           this rowIndex is ${scope.rowIndex}.`
-         }}
+      :expand-type="false"
+      :max-height="600"
+      emptyText="No se han encontrado resultados"
+      :selection-type="false">
+      <template slot="name" scope="scope">
+        <span>{{ scope.row.name }}</span>
       </template>
-      <template slot="likes" scope="scope">
-        {{ scope.row.likes.join(',') }}
-      </template>
-    </zk-table>
+    </safe-treeview>
   </div>
 </template>
 
 <script>
-  import ZkSwitch from './Switch/Switch';
+class TrainingPlan {
+  constructor(
+    id,
+    name,
+    startDate,
+    endDate,
+    totalVacancies,
+    totalReserved,
+    totalNumberOfHours,
+    totalInitialBudget,
+    coordinador,
+    state,
+  ) {
+    this.id = id;
+    this.name = name;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.totalVacancies = totalVacancies;
+    this.totalReserved = totalReserved;
+    this.totalNumberOfHours = totalNumberOfHours;
+    this.totalInitialBudget = totalInitialBudget;
+    this.coordinador = coordinador;
+    this.coordinador = coordinador;
+    this.state = state;
+  }
+  setChildren(children) {
+    if (!this.children) this.children = [];
+    this.children.push(children);
+  }
+}
 
-  export default {
-    name: 'example',
-    components: {
-      ZkSwitch,
-    },
-    data() {
-      return {
-        props: {
-          stripe: false,
-          border: false,
-          showHeader: true,
-          showSummary: false,
-          showRowHover: true,
-          showIndex: false,
-          treeType: true,
-          isFold: true,
-          expandType: false,
-          selectionType: false,
-        },
-        data: [
-          {
-            name: 'Jack',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 10,
-            children: [
-              {
-                name: 'Ashley',
-                sex: 'female',
-                likes: ['football', 'basketball'],
-                score: 20,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                    children: [
-                      {
-                        name: 'Ashley',
-                        sex: 'female',
-                        likes: ['football', 'basketball'],
-                        score: 20,
-                      },
-                      {
-                        name: 'Taki',
-                        sex: 'male',
-                        likes: ['football', 'basketball'],
-                        score: 10,
-                        children: [
-                          {
-                            name: 'Ashley',
-                            sex: 'female',
-                            likes: ['football', 'basketball'],
-                            score: 20,
-                          },
-                          {
-                            name: 'Taki',
-                            sex: 'male',
-                            likes: ['football', 'basketball'],
-                            score: 10,
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
-              },
-            ],
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-            children: [
-              {
-                name: 'Ashley',
-                sex: 'female',
-                likes: ['football', 'basketball'],
-                score: 20,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                  },
-                ],
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-            children: [
-              {
-                name: 'Ashley',
-                sex: 'female',
-                likes: ['football', 'basketball'],
-                score: 20,
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
-              },
-            ],
-          },
-        ],
-        columns: [
-          {
-            label: 'name',
-            prop: 'name',
-            width: '400px',
-          },
-          {
-            label: 'sex',
-            prop: 'sex',
-            minWidth: '50px',
-          },
-          {
-            label: 'score',
-            prop: 'score',
-          },
-          {
-            label: 'likes',
-            prop: 'likes',
-            minWidth: '200px',
-            type: 'template',
-            template: 'likes',
-          },
-        ],
-      };
-    },
-    computed: {
-      propList() {
-        return Object.keys(this.props).map(item => ({
-          name: item,
-        }));
+export default {
+  name: 'example',
+  data() {
+    return {
+      props: {
+        stripe: true,
+        border: true,
+        showHeader: true,
+        showSummary: false,
+        treeType: true,
+        isFold: false,
       },
+      data: [],
+      columns: [
+        {
+          prop: 'name',
+          label: 'Nombre',
+          width: '350',
+          type: 'template',
+          template: 'name',
+        },
+        {
+          prop: 'coordinador',
+          label: 'Coordinador',
+        },
+        {
+          prop: 'startDate',
+          label: 'F. Inicio',
+          type: 'template',
+          template: 'startDate',
+        },
+        {
+          prop: 'endDate',
+          label: 'F. Fin',
+          type: 'template',
+          template: 'endDate',
+        },
+        {
+          prop: 'state',
+          label: 'Estado',
+        },
+        {
+          prop: 'totalInitialBudget',
+          label: 'P. inicial',
+        },
+        {
+          prop: 'totalNumberOfHours',
+          label: 'Horas',
+          width: '80',
+        },
+        {
+          prop: 'totalReserved',
+          label: 'P. reservadas',
+        },
+        {
+          prop: 'totalVacancies',
+          label: 'P. totales',
+        },
+      ],
+    };
+  },
+  created() {
+    fetch('http://localhost:3000/data')
+      .then(data => data.json())
+      .then((res) => {
+        this.data.push(this.buildTreeView(res, 1, null));
+      });
+  },
+  methods: {
+    buildTreeView(node, curentLevel, nameVersion) {
+      const level = new TrainingPlan(
+        node.id,
+        nameVersion || node.name,
+        node.startDate,
+        node.endDate,
+        node.totalVacancies,
+        node.totalReserved,
+        node.totalNumberOfHours,
+        node.totalInitialBudget,
+        node.coordinador,
+        node.state,
+      );
+      let levelName;
+      if (curentLevel === 1) levelName = 'moduleVersion';
+      if (curentLevel === 2) levelName = 'submoduleVersion';
+      if (curentLevel === 3) levelName = 'trainingActivityVersion';
+      if (curentLevel === 4) levelName = 'editionVersion';
+      if (curentLevel <= 4) {
+        node[levelName].forEach((element) => {
+          level.setChildren(
+            this.buildTreeView(
+              element,
+              curentLevel + 1,
+              curentLevel === 4 ? node.name : null,
+            ),
+          );
+        });
+      }
+      return level;
     },
-    methods: {
-
-    },
-  };
+  },
+};
 </script>
 
 <style scoped lang="less">
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
-  .switch-list {
-    margin: 20px 0;
-    list-style: none;
-    overflow: hidden;
-  }
-
-  .switch-item {
-    margin: 20px;
-    float: left;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
 </style>

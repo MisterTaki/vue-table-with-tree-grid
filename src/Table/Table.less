@@ -1,13 +1,15 @@
 @import "./font/iconfont";
 
 // text
-@prefixCls: zk-table;
+@prefixCls: safe-treeview;
 // color
-@black: #1F2D3D;
+@black: #1f2d3d;
 @white: #ffffff;
 @border: #e9eaec;
 @hoverRow: #ebf7ff;
 @backgroundRow: #f8f8f9;
+
+@popper-background-color: #000;
 
 .@{prefixCls} {
   position: relative;
@@ -116,12 +118,13 @@
 .@{prefixCls}--tree-icon {
   margin-right: 6px;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .@{prefixCls}--expand-inner {
   text-align: center;
   cursor: pointer;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .@{prefixCls}--expanded-inner {
@@ -130,4 +133,12 @@
 
 .@{prefixCls}--expand-content {
   padding: 20px;
+}
+.@{prefixCls}--truncate {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
 }

@@ -1,7 +1,7 @@
 {
-  "name": "vue-table-with-tree-grid",
-  "version": "0.2.4",
-  "description": "A table (with tree-grid) component for Vue.js 2.0. (Its style extends iView)",
+  "name": "vue-tree-view-table",
+  "version": "0.1.84",
+  "description": "A table (with tree-grid) component for Vue.js 2.0. (Its style extends vue-table-with-tree-grid)",
   "keywords": [
     "vue",
     "vue-table",
@@ -9,17 +9,10 @@
     "vue-component",
     "vue-jsx"
   ],
-  "author": "GaoQi <taki.gaoqi@outlook.com>",
-  "homepage": "https://github.com/MisterTaki/vue-table-with-tree-gird",
-  "bugs": "https://github.com/MisterTaki/vue-table-with-tree-gird/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MisterTaki/vue-table-with-tree-gird"
-  },
-  "main": "lib/vue-table-with-tree-grid.js",
+  "author": "Alexito <alexitowy@gmail.com>",
+  "main": "lib/vue-tree-view-table.js",
   "files": [
     "lib",
-    "example",
     "src"
   ],
   "license": "MIT",
@@ -28,6 +21,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "global": "^4.4.0",
     "vue": "^2.4.3"
   },
   "devDependencies": {
@@ -36,7 +30,7 @@
     "babel-eslint": "^7.1.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "babel-loader": "^7.1.1",
-    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-istanbul": "^5.2.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-plugin-transform-vue-jsx": "^3.5.0",
@@ -44,8 +38,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.22.0",
     "connect-history-api-fallback": "^1.3.0",
-    "css-loader": "^0.28.0",
-    "cssnano": "^3.10.0",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-friendly-formatter": "^3.0.0",
@@ -56,16 +50,17 @@
     "eventsource-polyfill": "^0.9.6",
     "friendly-errors-webpack-plugin": "^1.1.3",
     "html-webpack-plugin": "^2.30.1",
+    "json-server": "^0.15.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "opn": "^5.1.0",
     "ora": "^1.3.0",
-    "url-loader": "^0.5.9",
+    "url-loader": "^2.2.0",
     "vue-loader": "^12.1.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.3.3",
     "webpack": "^2.6.1",
-    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-bundle-analyzer": "^3.5.2",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
@@ -81,5 +76,13 @@
     "> 1%",
     "last 2 versions",
     "not ie < 9"
-  ]
+  ],
+  "rules": {
+    "linebreak-style": 0,
+    "eslint linebreak-style": [
+      0,
+      "error",
+      "windows"
+    ]
+  }
 }

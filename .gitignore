@@ -1,6 +1,9 @@
 .DS_Store
 node_modules/
 lib/
+./mocks
+mocks/
+./mocks/*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
