@@ -1,4 +1,3 @@
-import Checkbox from "../Checkbox/Checkbox"; // eslint-disable-line
 import { mixins } from './utils';
 
 /* eslint-disable no-underscore-dangle */
@@ -57,42 +56,16 @@ export default {
       }
       return childrenIndex;
     },
+    // eslint-disable-next-line no-unused-vars
     handleEvent($event, type, data, others) {
       const certainType = this.validateType(
         type,
-        ['cell', 'row', 'checkbox', 'icon'],
+        ['cell', 'row', 'icon'],
         'handleEvent',
       );
       const eventType = $event ? $event.type : '';
       const { row, rowIndex, column, columnIndex } = data;
       const latestData = this.table.bodyData;
-      // Checkbox
-      if (certainType.checkbox) {
-        const { isChecked } = others;
-        this.toggleStatus('Checked', row, rowIndex, isChecked);
-        if (row._childrenLen > 0) {
-          const childrenIndex = this.getChildrenIndex(
-            row._level,
-            rowIndex,
-            false,
-          );
-          for (let i = 0; i < childrenIndex.length; i++) {
-            this.toggleStatus(
-              'Checked',
-              latestData[childrenIndex[i]],
-              childrenIndex[i],
-              isChecked,
-            );
-          }
-        }
-        return this.table.$emit(
-          'checkbox-click',
-          latestData[rowIndex],
-          column,
-          columnIndex,
-          $event,
-        );
-      }
       // Tree's icon
       if (certainType.icon) {
         $event.stopPropagation();
